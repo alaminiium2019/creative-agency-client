@@ -28,7 +28,7 @@ const Services = () => {
                 <h1 className="text-center">Provide awesome services</h1>
             </div>
             <div className="d-flex justify-content-center mt-4">
-                <div className="row w-80 justify-content-center">
+                <div className="row w-90 justify-content-center">
                     {
                         serviceData.map(service => <ServiceDetails service={service}></ServiceDetails>)
                     }
@@ -38,7 +38,7 @@ const Services = () => {
 
         </section>
     );
-};
+
 
 
 function ServiceDetails(props) {
@@ -57,11 +57,7 @@ function ServiceDetails(props) {
     )
 }
 
-{/* <div classNameName="col-md-4">
-<img src={photo}/>
-<h2>{name}</h2>
-<p>{description}</p>
-</div> */}
+};
 
 
 
