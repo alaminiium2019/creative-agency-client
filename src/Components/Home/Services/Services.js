@@ -1,3 +1,5 @@
+
+import { Link } from '@material-ui/core';
 import React from 'react';
 import mobile from '../../../images/icons/service1.png';
 import graphic from '../../../images/icons/service2.png';
@@ -32,7 +34,6 @@ const Services = () => {
                     {
                         serviceData.map(service => <ServiceDetails service={service}></ServiceDetails>)
                     }
-
                 </div>
             </div>
 
@@ -41,21 +42,22 @@ const Services = () => {
 
 
 
-function ServiceDetails(props) {
-    const { photo, name, description } = props.service;
-    return (
-
-        <div className="card col-md-3 text-center p-1 m-1">
-            <img className="card-img-top mx-auto d-block" style={{ height: '100px', width: '100px' }} src={photo} alt="Card image cap" />
-            <div className="card-block">
+    function ServiceDetails(props) {
+        const { photo, name, description } = props.service;
+        return (
+            
+           <div className="card col-md-3 text-center p-1 m-1">
+                <img className="card-img-top mx-auto d-block" src={photo} style={{ height: '100px', width: '100px' }}  alt="Card image cap" />
+                <div className="card-block">
                 <h5 className="card-title" >{name}</h5>
-                <p className="card-text" >{description}</p>
+                    <p className="card-text" ><Link to="/orderlist">{description}</Link></p>
+                </div>
+
             </div>
+            
 
-        </div>
-
-    )
-}
+        )
+    }
 
 };
 

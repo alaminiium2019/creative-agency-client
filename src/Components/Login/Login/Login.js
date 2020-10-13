@@ -7,8 +7,7 @@ import './Login.css';
 import Logo from '../../../images/logos/logo.png';
 import { UserContext } from "../../../App";
 import firebaseConfig from "./firebase.config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+
 
 
 
@@ -51,7 +50,7 @@ const Login = () => {
     return (
         <div className="">
             <div className="text-center mt-4 d-flex justify-content-center">
-            <img  style={{width:'180px'}} src={Logo}/>
+            <img  style={{width:'180px'}} src={Logo} alt=""/>
             </div>
         <div className="d-flex align-items-center justify-content-center">
             <div className="text-center loginform">
