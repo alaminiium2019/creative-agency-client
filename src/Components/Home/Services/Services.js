@@ -1,9 +1,10 @@
 
 import { Link } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import mobile from '../../../images/icons/service1.png';
 import graphic from '../../../images/icons/service2.png';
 import web from '../../../images/icons/service3.png';
+import ServicesDetails from '../ServicesDetails/ServicesDetails';
 
 const serviceData = [
     {
@@ -23,7 +24,17 @@ const serviceData = [
     }
 ]
 
+
+
 const Services = () => {
+    const [getService,setGetService] = useState([]);
+
+    useEffect (() =>{
+        fetch('http://localhost:5000/getService')
+        .then(res => res.json())
+        .then(data => setGetService(data))
+    },[])
+
     return (
         <section>
             <div className="mt-5">
@@ -32,32 +43,13 @@ const Services = () => {
             <div className="d-flex justify-content-center mt-4">
                 <div className="row w-90 justify-content-center">
                     {
-                        serviceData.map(service => <ServiceDetails service={service}></ServiceDetails>)
+                        getService.map(service => <ServicesDetails service={service}></ServicesDetails>)
                     }
                 </div>
             </div>
 
         </section>
     );
-
-
-
-    function ServiceDetails(props) {
-        const { photo, name, description } = props.service;
-        return (
-            
-           <div className="card col-md-3 text-center p-1 m-1">
-                <img className="card-img-top mx-auto d-block" src={photo} style={{ height: '100px', width: '100px' }}  alt="Card image cap" />
-                <div className="card-block">
-                <h5 className="card-title" >{name}</h5>
-                    <p className="card-text" ><Link to="/orderlist">{description}</Link></p>
-                </div>
-
-            </div>
-            
-
-        )
-    }
 
 };
 

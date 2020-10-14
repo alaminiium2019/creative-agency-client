@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import Logo from '../../../images/logos/logo.png';
 
 const Navbar = () => {
+
+   const [loggedInUser,setLoggedInUser]=useContext(UserContext);
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -25,11 +28,17 @@ const Navbar = () => {
                         <li className="nav-item">
                             <a className="nav-link mr-4" href="#">Contact Us</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link mr-4" href="#" style={{backgroundColor:'#111430'}} className="btn text-white pr-5 pl-5"><Link to="/login">Login</Link></a>
-                            
-                            
-                        </li>
+                        
+                        {
+                           !loggedInUser.name?
+                               <div><li className="nav-item">
+                           <a className="nav-link mr-4" href="#" style={{backgroundColor:'#111430'}} className="btn text-white pr-5 pl-5"><Link to="/login">Login</Link></a>
+                           </li>
+                           </div>:
+                           loggedInUser.name                   
+                       
+                        }
+                        
                     </ul>
 
                 </div>
