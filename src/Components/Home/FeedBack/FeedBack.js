@@ -27,16 +27,15 @@ const feedBackData = [
 
 const FeedBack = () => {
     return (
-        <section>
+        <section className="container">
             <div className="mt-5">
                 <h1 className="text-center">Clients FeedBack</h1>
             </div>
             <div className="d-flex justify-content-center mt-4">
-                <div className="row w-90 justify-content-center">
+                <div className="row justify-content-center">
                     {
                         feedBackData.map(feedback => <FeedBackDetails feedback={feedback}></FeedBackDetails>)
                     }
-
                 </div>
             </div>
         </section>
@@ -45,12 +44,10 @@ const FeedBack = () => {
     function FeedBackDetails(props) {
         const { clientPhoto, name, post, description } = props.feedback;
         return (
-
+            
             <div className="card col-md-3 p-2 m-1">
-
                 <div className="d-flex">
                     <img className="card-img-top" style={{ height: '100px', width: '100px' }} src={clientPhoto} alt="Card image cap" />
-
                     <div className="pl-3 pt-2">
                         <h5 className="card-title" >{name}</h5>
                         <h5>{post}</h5>

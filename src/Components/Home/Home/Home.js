@@ -10,7 +10,7 @@ import Sponsor from '../Sponsor/Sponsor';
 
 const Home = () => {
     return (
-        <div className="container">
+        <div>
             <Header></Header>
             <Sponsor></Sponsor>
             <Services></Services>  

@@ -8,28 +8,24 @@ import Uber from '../../../images/logos/uber.png';
 
 const Sponsor = () => {
     return (
-        <div className="row w-70 justify-content-center">
-            <div className="col-md-2 mr-3">
-                <img style={{width:'120px'}} src={slack}/>
-
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-md-2 mr-3">
+                    <img style={{ width: '120px' }} src={slack} />
+                </div>
+                <div className="col-md-2">
+                    <img style={{ width: '120px' }} src={Google} />
+                </div>
+                <div className="col-md-2">
+                    <img style={{ width: '90px' }} src={Uber} />
+                </div>
+                <div className="col-md-2">
+                    <img style={{ width: '90px' }} src={NETFLIX} />
+                </div>
+                <div className="col-md-2">
+                    <img style={{ width: '120px' }} src={airbnb} />
+                </div>
             </div>
-            <div className="col-md-2">
-            <img style={{width:'120px'}} src={Google}/>
-
-            </div>
-            <div className="col-md-2">
-            <img style={{width:'90px'}} src={Uber}/>
-
-            </div>
-            <div className="col-md-2">
-            <img style={{width:'90px'}} src={NETFLIX}/>
-
-            </div>
-            <div className="col-md-2">
-            <img style={{width:'120px'}} src={airbnb}/>
-
-            </div>
-
         </div>
     );
 };

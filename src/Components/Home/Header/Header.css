@@ -1,9 +1,9 @@
 
 .header-bg {
     background-color: #FBD062;
-    transform: skew(0deg,-10deg) translateY(-120px);
+    transform: skew(0deg,-8deg) translateY(-120px);
 }
 .boxpart{
-    padding:120px 30px; 
-    transform: skew(0deg, 10deg);
+    padding:124px ; 
+    transform: skew(0deg, 8deg);
 }

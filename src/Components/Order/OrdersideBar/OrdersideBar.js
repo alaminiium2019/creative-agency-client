@@ -1,11 +1,25 @@
 
 import { faCommentDots, faShoppingCart, faSignOutAlt, faTaxi } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import './OrdersideBar.css';
 
 const OrdersideBar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [isDoctor, setIsDoctor] = useState(false);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/isDoctor', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ email: loggedInUser.email })
+        })
+            .then(res => res.json())
+            .then(data => setIsDoctor(data));
+    }, [])
+
     
     return (
         <div className="container">
@@ -26,6 +40,24 @@ const OrdersideBar = () => {
                             <FontAwesomeIcon icon={faCommentDots} /> <span>Review</span>
                         </a>
                     </li>
+                   {isDoctor && 
+                    <div><li>
+                        <a href="/review" className="text-white">
+                            <FontAwesomeIcon icon={faCommentDots} /> <span>Admin-1</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/review" className="text-white">
+                            <FontAwesomeIcon icon={faCommentDots} /> <span>Admin-2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/review" className="text-white">
+                            <FontAwesomeIcon icon={faCommentDots} /> <span>Admin-3</span>
+                        </a>
+                    </li>
+                    </div>
+}
                 </ul>
                 <div>
                     <Link to="/" className="text-white"><FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span></Link>
@@ -34,5 +66,6 @@ const OrdersideBar = () => {
         </div>
     );
 };
+//change
 
 export default OrdersideBar;
