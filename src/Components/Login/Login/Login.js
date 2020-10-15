@@ -1,6 +1,6 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import Gicon from '../../../images/google.png';
 import './Login.css';
@@ -13,6 +13,9 @@ import firebaseConfig from "./firebase.config";
 
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [getAdmin,setGetAdmin] = useState(null)
+    //admin, setAdmin other compo
+
     const history = useHistory()
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
@@ -21,15 +24,36 @@ const Login = () => {
         firebase.initializeApp(firebaseConfig);
     }
 
+    useEffect(() => {
+        fetch('http://localhost:5000/getAdmins')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setGetAdmin(data)
+        });
+
+    },[loggedInUser])//change
+
     const handleGoogleSignIn = () => {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then(res => {
-                const { displayName, email } = res.user;
-                const signedInUser = { name: displayName, email };
-                setLoggedInUser(signedInUser);
-                storeAuthToken();
-                history.replace(from)
+                const {displayName,email,photoURL,uid}=res.user;
+                let isUserAdmin = getAdmin.filter(admin => admin.email === email);
+                if(isUserAdmin.length>0){
+                    isUserAdmin =true
+                }else{
+                    isUserAdmin = false;
+                }
+                setLoggedInUser({...loggedInUser,name:displayName,email,photoURL,isUserAdmin});
+                history.replace(from);
+
+
+                // const { displayName, email } = res.user;
+                // const signedInUser = { name: displayName, email };
+                // setLoggedInUser(signedInUser);
+                // storeAuthToken();
+                // history.replace(from)
 
             }).catch(error => {
                 let errorCode = error.code;
@@ -39,13 +63,13 @@ const Login = () => {
     }
 
 //Added jwt
-    const storeAuthToken = () =>{
-        firebase.auth().currentUser.getIdToken(true)
-        .then(function(idToken) {
-            sessionStorage.setItem('token',idToken);
-        })
-        .catch(err => console.log(err))
-    }
+    // const storeAuthToken = () =>{
+    //     firebase.auth().currentUser.getIdToken(true)
+    //     .then(function(idToken) {
+    //         sessionStorage.setItem('token',idToken);
+    //     })
+    //     .catch(err => console.log(err))
+    // }
 
     return (
         <div className="">
