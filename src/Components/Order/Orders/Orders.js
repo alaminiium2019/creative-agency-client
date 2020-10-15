@@ -1,11 +1,10 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import OrderHeader from '../OrderHeader/OrderHeader';
 import OrdersideBar from '../OrdersideBar/OrdersideBar';
-import { useParams } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 
 const Orders = () => {
-    //const { id } = useParams()
+    //const { orid } = useParams()
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = data => {
@@ -45,7 +44,7 @@ const Orders = () => {
                             {errors.email && <span className="text-danger">This field is required</span>}
                         </div>
                         <div className="form-group">
-                        <input type="text" ref={register({ required: true })} name="course"  className="form-control" />
+                            <input type="text" ref={register({ required: true })} name="course" placeholder="Course name" className="form-control" />
                         </div>
                         <div className="form-group">
                             <textarea type="text" ref={register({ required: true })} name="description" placeholder="product details" className="form-control" />

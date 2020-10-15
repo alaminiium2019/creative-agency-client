@@ -36,11 +36,11 @@ const Services = () => {
     }, [])
 
     return (
-        <div className="container text-center">
-            <div className="mt-5 pb-4">
-                <h1>Provide awesome services</h1>
-            </div>
-            <div className="row">
+        <div className="container text-center mt-5">
+            
+                <h1 className="mb-3 pb-3">Provide awesome <span style={{color:'#7AB259'}}>services</span></h1>
+            
+            <div className="row d-flex justify-content-center">
                 {
                     getService.map(service => <ServicesDetails service={service}></ServicesDetails>)
                 }

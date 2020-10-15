@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import OrderHeader from '../../Order/OrderHeader/OrderHeader';
+import OrdersideBar from '../../Order/OrdersideBar/OrdersideBar';
 import ServiceList from '../../Order/ServiceList/ServiceList';
 import AdminSideBar from '../AdminSideBar/AdminSideBar';
 
@@ -13,12 +15,12 @@ const AdminServiceList = () => {
 
     return (
         <div className="container pt-5">
+            <OrderHeader></OrderHeader>
             <div className="row">
                 <div className="col-md-4">
-                    <AdminSideBar></AdminSideBar>
-
+                    <OrdersideBar></OrdersideBar>
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-8" style={{border:'1px solid red'}}>
                     <table className="table table-borderless">
             <thead>
                 <tr>

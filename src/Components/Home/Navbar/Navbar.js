@@ -29,15 +29,9 @@ const Navbar = () => {
                             <a className="nav-link mr-4" href="#">Contact Us</a>
                         </li>
                         
-                        {
-                           !loggedInUser.name?
-                               <div><li className="nav-item">
-                           <a className="nav-link mr-4" href="#" style={{backgroundColor:'#111430'}} className="btn text-white pr-5 pl-5"><Link to="/login">Login</Link></a>
+                        <li className="nav-item">
+                           <a className="nav-link mr-4" href="#" style={{backgroundColor:'#111430'}} className="btn text-white pr-5 pl-5"><Link to="/dashboard">Login</Link></a>
                            </li>
-                           </div>:
-                           loggedInUser.name                   
-                       
-                        }
                         
                     </ul>
 
