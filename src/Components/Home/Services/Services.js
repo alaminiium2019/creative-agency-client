@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 // import graphic from '../../../images/icons/service2.png';
 // import web from '../../../images/icons/service3.png';
 import ServicesDetails from '../ServicesDetails/ServicesDetails';
+import './Services.css';
 
 // const serviceData = [
 //     {
@@ -30,19 +31,18 @@ const Services = () => {
     const [getService, setGetService] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/getService')
+        fetch('https://creative-agency-server.herokuapp.com/getService')
             .then(res => res.json())
             .then(data => setGetService(data))
     }, [])
 
     return (
         <div className="container text-center mt-5">
-            
-                <h1 className="mb-3 pb-3">Provide awesome <span style={{color:'#7AB259'}}>services</span></h1>
-            
-            <div className="row d-flex justify-content-center">
+
+            <h1 className="mb-3 pb-3">Provide awesome <span style={{ color: '#7AB259' }}>services</span></h1>
+            <div className="row  d-flex justify-content-center">
                 {
-                    getService.map(service => <ServicesDetails service={service}></ServicesDetails>)
+                    getService.map(service => <ServicesDetails service={service} key={service._id}></ServicesDetails>)
                 }
             </div>
         </div>

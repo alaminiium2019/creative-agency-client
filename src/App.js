@@ -34,12 +34,11 @@ function App() {
           <PrivateRouter path="/dashboard">
             <DashBoard></DashBoard>
           </PrivateRouter>
-          
           <Route path="/adminAddService">
             <AdminAddService></AdminAddService>
           </Route>
           <Route path="/adminServiceList">
-            <AdminServiceList></AdminServiceList>            
+            <AdminServiceList></AdminServiceList>
           </Route>
           <Route path="/makeAdmin">
             <MakeAdmin></MakeAdmin>

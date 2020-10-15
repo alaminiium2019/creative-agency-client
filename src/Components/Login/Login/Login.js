@@ -13,7 +13,7 @@ import firebaseConfig from "./firebase.config";
 
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [getAdmin,setGetAdmin] = useState(null)
+    const [getAdmin, setGetAdmin] = useState(null)
     //admin, setAdmin other compo
 
     const history = useHistory()
@@ -25,35 +25,29 @@ const Login = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/getAdmins')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setGetAdmin(data)
-        });
+        fetch('https://creative-agency-server.herokuapp.com/getAdmins')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setGetAdmin(data)
+            });
 
-    },[loggedInUser])//change
+    }, [loggedInUser])//change
 
     const handleGoogleSignIn = () => {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then(res => {
-                const {displayName,email,photoURL,uid}=res.user;
+                const { displayName, email, photoURL, uid } = res.user;
                 let isUserAdmin = getAdmin.filter(admin => admin.email === email);
-                if(isUserAdmin.length>0){
-                    isUserAdmin =true
-                }else{
+                if (isUserAdmin.length > 0) {
+                    isUserAdmin = true
+                } else {
                     isUserAdmin = false;
                 }
-                setLoggedInUser({...loggedInUser,name:displayName,email,photoURL,isUserAdmin});
+                setLoggedInUser({ ...loggedInUser, name: displayName, email, photoURL, isUserAdmin });
                 history.replace(from);
 
-
-                // const { displayName, email } = res.user;
-                // const signedInUser = { name: displayName, email };
-                // setLoggedInUser(signedInUser);
-                // storeAuthToken();
-                // history.replace(from)
 
             }).catch(error => {
                 let errorCode = error.code;
@@ -62,27 +56,20 @@ const Login = () => {
             });
     }
 
-//Added jwt
-    // const storeAuthToken = () =>{
-    //     firebase.auth().currentUser.getIdToken(true)
-    //     .then(function(idToken) {
-    //         sessionStorage.setItem('token',idToken);
-    //     })
-    //     .catch(err => console.log(err))
-    // }
+
 
     return (
         <div className="">
             <div className="text-center mt-4 d-flex justify-content-center">
-            <img  style={{width:'180px'}} src={Logo} alt=""/>
+                <img style={{ width: '180px' }} src={Logo} alt="" />
             </div>
-        <div className="d-flex align-items-center justify-content-center">
-            <div className="text-center loginform">
-            <h2 className="pb-2">Login With</h2>
-            <button className="form-control" onClick={handleGoogleSignIn}><img src={Gicon} className="gicon" />Continue with Google</button>
-            <p className="pt-2">Don't have an account? <Link to="/login">Create an account</Link></p>
-        </div>
-        </div>
+            <div className="d-flex align-items-center justify-content-center">
+                <div className="text-center loginform">
+                    <h2 className="pb-2">Login With</h2>
+                    <button className="form-control" onClick={handleGoogleSignIn}><img src={Gicon} className="gicon" />Continue with Google</button>
+                    <p className="pt-2">Don't have an account? <Link to="/login">Create an account</Link></p>
+                </div>
+            </div>
         </div>
     );
 };

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import OrderHeader from '../../Order/OrderHeader/OrderHeader';
 import OrdersideBar from '../../Order/OrdersideBar/OrdersideBar';
-import ServiceList from '../../Order/ServiceList/ServiceList';
-import AdminSideBar from '../AdminSideBar/AdminSideBar';
+
 
 const AdminServiceList = () => {
     const [servicesList,setServicesList]=useState([]);
 
     useEffect (() =>{
-        fetch('http://localhost:5000/adminServiceList')
+        fetch('https://creative-agency-server.herokuapp.com/adminServiceList')
         .then(res => res.json())
         .then(data => setServicesList(data))
     },[])

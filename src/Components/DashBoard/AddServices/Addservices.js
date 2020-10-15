@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 
 const Addservices = () => {
     const [file,setFile]=useState(null);
-    const [info, setInfo] = useState({});
-    
+    const [info, setInfo] = useState({});  
 
 
     const handleBlur = e => {
@@ -15,7 +14,6 @@ const Addservices = () => {
     const handleFileChange = (e) => {
         const newFile = e.target.files[0];
         setFile(newFile);
-
     }
 
     const handleSubmit =()=>{
@@ -24,8 +22,7 @@ const Addservices = () => {
         formData.append('name',info.name);
         formData.append('details',info.details);
 
-
-        fetch('http://localhost:5000/adminAddService',{
+        fetch('https://creative-agency-server.herokuapp.com/adminAddService',{
             method: 'POST',
             body: formData
         })

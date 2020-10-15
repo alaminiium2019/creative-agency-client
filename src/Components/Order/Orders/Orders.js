@@ -10,7 +10,7 @@ const Orders = () => {
     const onSubmit = data => {
         console.log(data);
 
-        fetch('http://localhost:5000/addorders', {
+        fetch('https://creative-agency-server.herokuapp.com/addorders', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)
@@ -55,35 +55,12 @@ const Orders = () => {
                                 <input ref={register({ required: true })} className="form-control" name="price" placeholder="price" type="number" />
 
                             </div>
-                            {/* <div className="col-6">
-                                    <input type="file" ref={register({ required: false })} name="photo" placeholder="picture" className="form-control" />
-                                </div> */}
                         </div>
 
                         <div className="form-group">
                             <button type="submit" style={{ backgroundColor: '#111430' }} className="btn text-white pr-5 pl-5">Send</button>
                         </div>
-
                     </form>
-                    {/* <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-group">
-                            <input type="email" className="form-control" name="email" placeholder="your name / company's name" />
-                        </div>
-                        <div className="form-group">
-                            <input type="text" className="form-control" name="name" placeholder="Your email address" />
-                        </div>
-                        <div className="form-group">
-                            <input type="text" className="form-control" name="name" value={id} />
-                        </div>
-                        <div className="form-group">
-                            <input type="text" className="form-control" name="name" placeholder="Project Details" />
-                        </div>
-                        <div className="form-group d-flex">
-                            <input type="text" className="form-control" name="name" placeholder="Price" />
-                            <input type="file" className="form-control" placeholder="Picture" />
-                        </div>
-                        <button type="submit" style={{ backgroundColor: '#111430' }} className="btn text-white pr-5 pl-5">Send</button>
-                    </form> */}
                 </div>
             </div>
 

@@ -9,11 +9,11 @@ import Uber from '../../../images/logos/uber.png';
 const Sponsor = () => {
     return (
         <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-2 mr-3">
+            <div className="row justify-content-center text-center">
+                <div className="col-md-2  mr-3">
                     <img style={{ width: '120px' }} src={slack} />
                 </div>
-                <div className="col-md-2">
+                <div className="col-md-2 ">
                     <img style={{ width: '120px' }} src={Google} />
                 </div>
                 <div className="col-md-2">

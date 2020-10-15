@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { UserContext } from '../../../App';
 import OrderHeader from '../../Order/OrderHeader/OrderHeader';
 import OrdersideBar from '../../Order/OrdersideBar/OrdersideBar';
 
 
 const MakeAdmin = () => {
-    //make admin
+    
     const [userAdmin, setUserAdmin] = useState(null);
     const [showAdmin, setShowAdmin] = useState(false);
     const history = useHistory();
@@ -15,16 +14,14 @@ const MakeAdmin = () => {
         setUserAdmin({[e.target.name]: e.target.value});
     }
     const handleAdmin = (e) => {
-        fetch('http://localhost:5000/addUserAdmin',{
+        fetch('https://creative-agency-server.herokuapp.com/addUserAdmin',{
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(userAdmin)
         })
         .then(res => {
             setShowAdmin(res);
-            // if(res.status === 200){
-            //     setShowAdmin(true);
-            //}
+   
             console.log(res);
             alert('Admin succesfully created')
         })

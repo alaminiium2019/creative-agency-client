@@ -7,7 +7,7 @@ const ServiceList = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/orderServiceList')
+        fetch('https://creative-agency-server.herokuapp.com/orderServiceList')
             .then(res => res.json())
             .then(data => setServicesOrderList(data))
     }, [])
@@ -32,16 +32,16 @@ const ServiceList = () => {
     );
 
 
-function DisPlayCourse({orslist}){
-    return(
-        <div className="card col-md-4 m-1">
-            <h3>{orslist.course}</h3>
-            <p>{orslist.description}</p>
-        </div>
+    function DisPlayCourse({ orslist }) {
+        return (
+            <div className="card col-md-4 m-1">
+                <h3>{orslist.course}</h3>
+                <p>{orslist.description}</p>
+            </div>
 
-    );
+        );
 
-}
+    }
 };
 
 export default ServiceList;

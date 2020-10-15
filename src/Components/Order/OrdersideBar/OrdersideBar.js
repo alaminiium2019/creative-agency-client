@@ -8,8 +8,7 @@ import './OrdersideBar.css';
 const OrdersideBar = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
-///add
-//Working now
+
     return (
         <div>
             <div className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4" style={{ height: "90vh" }}>
@@ -51,9 +50,6 @@ const OrdersideBar = () => {
                         </div>
                     }
                 </ul>
-
-
-
 
                 <div>
                     <Link to="/" className="text-white"><FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span></Link>
